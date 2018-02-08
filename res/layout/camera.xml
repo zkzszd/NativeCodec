@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <Button 
+        android:id="@+id/bt_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="open"
+        android:textSize="12dp"
+        />
+    
+    <Button 
+        android:id="@+id/bt_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/bt_open"
+        android:text="end"
+        android:textSize="12dp"
+        />
+    
+   <Button 
+        android:id="@+id/bt_old"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/bt_end"
+        android:text="old"
+        android:textSize="12dp"
+        />
+   
+      <Button 
+        android:id="@+id/bt_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/bt_old"
+        android:text="player"
+        android:textSize="12dp"
+        />
+      
+     <Button 
+        android:id="@+id/bt_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/bt_player"
+        android:text="audio"
+        android:textSize="12dp"
+        />
+     
+     <com.example.nativecodec.EFCameraView
+	        android:id="@+id/camera_view"
+	        android:layout_below="@+id/bt_open"
+	        android:layout_width="0.5dp"
+	        android:layout_height="0.5dp"
+	        android:background="#ffffff"
+        />
+    
+    <LinearLayout
+        android:layout_below="@+id/bt_end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        
+        <zkzszd.opengl.AndroidGLES20 
+            android:id="@+id/sv_yuv"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        
+        <SurfaceView 
+            android:id="@+id/sv_native"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            />
+        
+    </LinearLayout>
+    
+    
+    
+
+</RelativeLayout>
