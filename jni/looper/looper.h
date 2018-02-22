@@ -31,7 +31,7 @@ public:
 struct loopermessage;
 typedef struct loopermessage loopermessage;
 
-// 内部消息载体
+// 消息载体
 struct loopermessage {
     int what;
     LoopMsgObj *obj;

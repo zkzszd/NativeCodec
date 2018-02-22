@@ -15,7 +15,6 @@
  */
 
 #include "looper.h"
-
 #include <assert.h>
 #include <jni.h>
 #include <pthread.h>
