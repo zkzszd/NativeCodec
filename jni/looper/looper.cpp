@@ -43,7 +43,6 @@ void* looper::trampoline(void* p) {
 looper::looper() {
     LOGV("at looper create");
 //    head = NULL;
-//    messageCurrent = NULL;
     sem_init(&headdataavailable, 0, 0);
     sem_init(&headwriteprotect, 0, 1);
     pthread_attr_t attr;
@@ -127,75 +126,6 @@ void looper::loop() {
     }
 }
 
-
-//void looper::addmsg(loopermessage *msg, bool flush) {
-//    sem_wait(&headwriteprotect);
-//    loopermessage *h = head;
-//    if (flush) {
-//        while(h) {
-//            loopermessage *next = h->next;
-//            delete h;
-//            h = next;
-//        }
-//        messageCurrent = h = NULL;
-//    }
-//    if(messageCurrent)
-//    {
-//        messageCurrent->next = msg;
-//        messageCurrent = messageCurrent->next;
-//    }
-////    if (h) {
-////        while (h->next) {
-////            h = h->next;
-////        }
-////        h->next = msg;
-////    }
-//    else
-//    {
-//        messageCurrent = head = msg;
-//    }
-//    LOGV("post msg %d", msg->what);
-//    sem_post(&headwriteprotect);
-//    sem_post(&headdataavailable);
-//}
-
-//void looper::loop() {
-//    LOGV("at loop");
-//    while(true) {
-//        // wait for available message
-//        sem_wait(&headdataavailable);
-//        LOGV("headdataavailable");
-//        // get next available message
-//        sem_wait(&headwriteprotect);
-//        LOGV("headwriteprotect");
-//        loopermessage *msg = head;
-//        if (msg == NULL) {
-//            LOGV("no msg");
-//            sem_post(&headwriteprotect);
-//            continue;
-//        }
-//        if(head == messageCurrent)      //队列只有一条消息
-//        {
-//            head = messageCurrent = NULL;
-//        }
-//        else
-//        {
-//            head = msg->next;
-//        }
-//
-//        sem_post(&headwriteprotect);
-//
-//        if (msg->quit) {
-//            //LOGV("quitting");
-//            delete msg;
-//            return;
-//        }
-//        LOGV("processing msg %d", msg->what);
-//        handle(msg->what, msg->obj);
-//        delete msg;
-//    }
-//}
-
 void looper::quit() {
     LOGV("quit");
     loopermessage *msg = new loopermessage();
@@ -213,4 +143,3 @@ void looper::quit() {
 void looper::handle(int what, LoopMsgObj* obj) {
     LOGV("dropping msg %d %p", what, obj);
 }
-

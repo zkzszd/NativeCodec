@@ -20,7 +20,7 @@
 #include <deque>
 using namespace std;
 
-//post 消息基类
+//post 消息对象基类
 class LoopMsgObj
 {
 public:
@@ -31,6 +31,7 @@ public:
 struct loopermessage;
 typedef struct loopermessage loopermessage;
 
+// 内部消息载体
 struct loopermessage {
     int what;
     LoopMsgObj *obj;
